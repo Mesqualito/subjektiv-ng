@@ -23,9 +23,9 @@ import {API_BASE_URL, WS_URL} from "./app.tokens";
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
     NgMaterialModule,
     HttpClientModule,
+    RouterModule.forRoot(routes,  { enableTracing: true }),
     BrowserAnimationsModule
   ],
   providers: [

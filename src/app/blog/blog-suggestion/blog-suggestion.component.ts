@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {BlogEntry} from "../../shared/services/blogservice";
+import {BlogEntry} from "../../shared/services/blog.service";
 import {Observable} from "rxjs";
 import {MediaObserver} from "@angular/flex-layout";
 import {map, startWith} from "rxjs/operators";
@@ -15,11 +15,11 @@ export class BlogSuggestionComponent {
 
   readonly columns$: Observable<number>;
   readonly breakPointsToColumnsNumber = new Map([
-    ['xs', 2],
-    ['sm', 3],
-    ['md', 5],
-    ['lg', 2],
-    ['xl', 3]
+    ['xs', 1],
+    ['sm', 1],
+    ['md', 1],
+    ['lg', 1],
+    ['xl', 2]
   ]);
 
   constructor( private _media: MediaObserver) {

@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {Observable} from "rxjs";
-import {ActivatedRoute} from "@angular/router";
-import {BlogEntry, BlogService} from "../shared/services/blogservice";
+import {Observable, from} from "rxjs";
+import {ActivatedRoute, ParamMap} from "@angular/router";
+import {BlogEntry, BlogService} from "../shared/services/blog.service";
 import {filter, map, switchMap, tap} from "rxjs/operators";
 import {log} from "util";
+
 
 
 @Component({
@@ -12,18 +13,23 @@ import {log} from "util";
   styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent {
+
   blogEntry$: Observable<BlogEntry>;
   suggestedBlogEntries$: Observable<BlogEntry[]>;
+  selectedId: number;
 
   constructor(
     private _route: ActivatedRoute,
     private _blogService: BlogService) {
     this.blogEntry$ = this._route.paramMap
       .pipe(
-        map(params => parseInt(params.get('blockEntryId') || '', 10)),
-        filter(blogEntryId => Boolean(blogEntryId)),
-        switchMap(blogEntryId => this._blogService.getById(blogEntryId))
-      );
+        switchMap(params => {
+          this.selectedId = +params.get('blogEntryId');
+          return this._blogService.getById(this.selectedId);
+        }),
+        tap(whatever => console.log('Whatever: ' + whatever)),
+        filter(blogEntryId => Boolean(blogEntryId))
+        )
 
     this.suggestedBlogEntries$ = this._blogService.getAll();
   }

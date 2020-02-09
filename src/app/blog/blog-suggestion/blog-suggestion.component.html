@@ -1,8 +1,18 @@
-<div class="entry__title" fxLayout="row">
+<div class="entry__title" fxLayout="column">
   Weitere Einträge in dieser Kategorie:
 </div>
-<mat-grid-list [cols]="columns$ | async" gutterSize="16px">
+<mat-grid-list [cols]="columns$ | async" gutterSize="16px" rowHeight="100px">
   <mat-grid-tile class="tile" *ngFor="let blogEntry of blogEntries">
-    <a class="tile__content" fxLayout fxLayoutAlign="center center" [routerLink]="['/blogeintraege', blogEntry.id]"></a>
+    <a fxLayout="column" [routerLink]="['/blogeintraege', blogEntry.id]">
+      <div class="entry__title">
+        Titel: {{blogEntry.title}}<br>
+        Kategorie: {{blogEntry.category}}
+      </div>
+      <div class="entry__title-small">
+        <hr>
+        Id: {{blogEntry.id}} - erstellt am: {{blogEntry.dateCreated | date: 'dd.MM.yyyy GGGG'}} -
+        geändert am: {{blogEntry.dateModified | date: 'dd.MM.yyyy GGGG'}}
+      </div>
+    </a>
   </mat-grid-tile>
 </mat-grid-list>

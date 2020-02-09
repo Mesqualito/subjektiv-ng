@@ -1,0 +1,36 @@
+@import '../../../styles/theme';
+
+:host {
+  display: block;
+}
+
+a {
+  text-decoration: none;
+}
+
+.tile {
+  background-color: mat-color($sub-background, card);
+
+  &:hover {
+    @include mat-elevation(4);
+    transition: .3s;
+  }
+}
+
+.entry__title {
+
+  color: mat-color($sub-foreground, text);
+  font-family: 'Calistoga', sans-serif;
+  font-size: mat-font-size($sub-typography, subheading-1);
+  font-weight: mat-font-weight($sub-typography, subheading-1);
+  line-height: mat-line-height($sub-typography, subheading-1);
+
+  &-small {
+    color: mat-color($sub-foreground, text);
+    font-family: 'Gloria Hallelujah', sans-serif;
+    font-size: mat-font-size($sub-typography, body-1);
+    font-weight: mat-font-weight($sub-typography, body-1);
+    line-height: mat-line-height($sub-typography, body-1);
+  }
+
+}

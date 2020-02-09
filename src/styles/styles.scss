@@ -11,6 +11,10 @@
 
 @include angular-material-theme($sub-theme);
 
+// global variables --- not reached through to e.g. blog-suggestion.component.scss ???
+$a-tags: 'a, a:active, a:hover, a:visited';
+$a-tags-hover: 'a:active, a:hover';
+
 // global styles
 html {
   -moz-osx-font-smoothing: grayscale;
