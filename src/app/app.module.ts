@@ -15,22 +15,22 @@ import {AusgabeService} from "./shared/services/ausgabe.service";
 import {RouterModule} from "@angular/router";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarTopComponent,
-    FooterComponent,
-    SearchComponent,
-    DownloadComponent
-  ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-    NgMaterialModule,
-    FormsModule,
-    FlexLayoutModule,
-    HttpClientModule
-  ],
-  providers: [AusgabeService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarTopComponent,
+        FooterComponent,
+        SearchComponent
+    ],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(routes),
+        NgMaterialModule,
+        FormsModule,
+        FlexLayoutModule,
+        HttpClientModule
+    ],
+    providers: [AusgabeService],
+    exports: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

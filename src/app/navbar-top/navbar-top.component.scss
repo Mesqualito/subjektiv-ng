@@ -2,7 +2,6 @@
 
 :host {
   display: block;
-  height: 100%;
 }
 
 .navbar-top {
@@ -24,7 +23,8 @@
 
 .navbar-top__title {
   color: mat-color($sub-foreground, text);
-  font-family: 'Tirillium Web', sans-serif;
+  font-size: mat-font-size($sub-typography, headline);
+  font-family: 'Special Elite', sans-serif;
   font-weight: 600;
   text-decoration: none;
 }
