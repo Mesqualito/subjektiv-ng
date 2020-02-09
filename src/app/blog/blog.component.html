@@ -1,0 +1,7 @@
+<div class="wrapper" fxLayout="column" fxLayout.gt-md="row-reverse">
+  <app-blog-detail fxFlex="auto" fxFlex.gt-md="65%" *ngIf="blogEntry$ | async as blogEntry" [blogEntry]="blogEntry">
+  </app-blog-detail>
+  <app-blog-suggestion fxFlex="auto" fxFlex.gt-md="35%" *ngIf="suggestedBlogEntries$ | async as blogEntries"
+                       [blogEntries]="blogEntries">
+  </app-blog-suggestion>
+</div>

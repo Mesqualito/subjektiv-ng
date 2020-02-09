@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {NgBasics} from "../ng-basics";
+import {IBasics} from "../IBasics";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 
-export interface Ausgabe extends NgBasics {
+export interface Ausgabe extends IBasics {
 
   title: string;
   description: string;

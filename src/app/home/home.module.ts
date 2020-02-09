@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HomeComponent} from "./home.component";
-import {FlexLayoutModule} from "@angular/flex-layout";
-import {MatGridListModule} from "@angular/material/grid-list";
 import {RouterModule} from "@angular/router";
-import {DownloadComponent} from "../download/download.component";
+import {NgMaterialModule} from "../ng-material/ng-material.module";
+import {FormsModule} from "@angular/forms";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {BlogModule} from "../blog/blog.module";
 
 @NgModule({
-  declarations: [HomeComponent, DownloadComponent],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
-      { path: '', component: HomeComponent }
+      {path: '', component: HomeComponent}
     ]),
+    NgMaterialModule,
+    FormsModule,
     FlexLayoutModule,
-    MatGridListModule
+    BlogModule
   ]
 })
 export class HomeModule { }

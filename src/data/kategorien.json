@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Leben und leben lassen",
+    "description": "Eine allgemeine Kategorie über das Leben, die Liebe und den Tod",
+    "dateCreated": "2020-02-09T12:01:00.000Z",
+    "dateModified": "2020-02-08T12:01:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "Projekt Freiheit",
+    "description": "Reise-Erfahrungen, Vorbereitung zum Auswandern, Umzug in ein neues Leben",
+    "dateCreated": "2020-02-09T12:02:00.000Z",
+    "dateModified": "2020-02-08T12:02:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "Manu facere",
+    "description": "Einträge rund ums Handwerken, Basteln, Improvisation und Erfindungsreichtum",
+    "dateCreated": "2020-02-09T12:03:00.000Z",
+    "dateModified": "2020-02-08T12:03:00.000Z"
+  },
+  {
+    "id": 4,
+    "title": "Informationstechnologie",
+    "description": "Die technische Seite von Wissen, Sozialisation, Kommunikation und Evolution",
+    "dateCreated": "2020-02-09T12:05:00.000Z",
+    "dateModified": "2020-02-08T12:05:00.000Z"
+  }
+]

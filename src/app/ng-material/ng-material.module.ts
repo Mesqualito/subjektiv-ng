@@ -9,6 +9,9 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {FormsModule} from "@angular/forms";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 
 @NgModule({
@@ -25,7 +28,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     MatSelectModule,
     MatCardModule,
     MatFormFieldModule,
-    BrowserAnimationsModule
+    MatGridListModule
   ]
 })
 export class NgMaterialModule { }

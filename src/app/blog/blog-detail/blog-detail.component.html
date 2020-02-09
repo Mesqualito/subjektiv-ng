@@ -1,0 +1,12 @@
+<div class="wrapper" ngClass.lt-md="wrapper--lt-md" ngClass.gt-md="wrapper--gt-md" fxLayout="row" fxLayoutAlign="center"
+     fxLayout.xs="column" fxLayoutAlign.xs="center center">
+  <div class="entry">
+    <h1 class="entry__title">{{blogEntry?.title}}</h1>
+    <div class="entry__category">{{blogEntry?.category}}</div>
+    <div class="entry__text">{{blogEntry?.text}}</div>
+    <div class="entry__saved">Id: {{blogEntry?.id}}<br>
+      gespeichert am: {{blogEntry?.dateCreated | date: 'DD.MM.yyyy GGGG - HH:ss'}}<br>
+      zuletzt geändert am: {{blogEntry?.dateModified | date: 'DD.MM.yyyy GGGG - HH:ss'}}<br>
+    </div>
+  </div>
+</div>

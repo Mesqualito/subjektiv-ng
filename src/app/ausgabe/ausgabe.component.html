@@ -1,0 +1,4 @@
+<div class="wrapper" fxLayout="column" fxLayout.gt-md="row-reverse">
+  <app-ausgabe-detail fxFlex="auto" *ngIf="ausgabe$ | async as ausgabe" [ausgabe]="ausgabe">
+  </app-ausgabe-detail>
+</div>
