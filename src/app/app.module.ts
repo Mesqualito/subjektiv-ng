@@ -1,30 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
+import { routes } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
 import { NavbarTopComponent } from './navbar-top/navbar-top.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchComponent } from './search/search.component';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from "@angular/material/button";
+import {NgMaterialModule} from "./ng-material/ng-material.module";
+import {FormsModule} from "@angular/forms";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {HttpClientModule} from "@angular/common/http";
+import { DownloadComponent } from './download/download.component';
+import {AusgabeService} from "./shared/services/ausgabe.service";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     NavbarTopComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
+    DownloadComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    MatToolbarModule,
-    MatButtonModule
+    RouterModule.forRoot(routes),
+    NgMaterialModule,
+    FormsModule,
+    FlexLayoutModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AusgabeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

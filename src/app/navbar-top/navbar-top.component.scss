@@ -1,0 +1,34 @@
+@import '../../styles/theme';
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.navbar-top {
+  background-color: mat-color($sub-background, card);
+  position: relative;
+  box-shadow: 0 1px mat-color($sub-foreground, divider);
+}
+
+.navbar-top__logo-title-group {
+  position: absolute;
+  right: 50%;
+  left: 50%;
+}
+
+.navbar-top__logo {
+  height: 45px;
+  margin-right: 16px;
+}
+
+.navbar-top__title {
+  color: mat-color($sub-foreground, text);
+  font-family: 'Tirillium Web', sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.navbar-top__icon-button {
+  color: mat-color($sub-foreground, icon);
+}

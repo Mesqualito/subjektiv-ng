@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+$sub-primary: mat-palette($mat-cyan);
+$sub-accent: mat-palette($mat-cyan, A200, A100, A400);
+$sub-warn: mat-palette($mat-red);
+
+$sub-theme: mat-light-theme($sub-primary, $sub-accent, $sub-warn);
+
+$sub-background: map-get($sub-theme, background);
+$sub-foreground: map-get($sub-theme, foreground);
+
+$sub-typography: mat-typography-config();

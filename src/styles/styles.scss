@@ -1,0 +1,32 @@
+@import './theme';
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Calistoga');
+@import url('https://fonts.googleapis.com/css?family=Gloria+Hallelujah');
+@import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
+// include this mixin only once in workspace!
+@include mat-core();
+
+@include angular-material-theme($sub-theme);
+
+// global styles
+html {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  color: #212121;
+  background-color: #f3f3f3;
+  font-family: mat-font-family($sub-typography);
+  line-height: mat-line-height($sub-typography, body-1);
+  font-size: mat-font-size($sub-typography, body-1);
+  height: 100%;
+  margin: 0
+}

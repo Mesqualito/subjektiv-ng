@@ -1,1 +1,15 @@
-<p>search works!</p>
+<form #firstForm="ngForm">
+  <mat-form-field>
+    <input matInput type="text" placeholder="subjektiv! Ausgabe" name="ausgabe" ngModel>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Artikel" name="artikel" ngModel>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Suche im Text" name="wort" ngModel>
+  </mat-form-field>
+
+  <button mat-raised-button color="accent" type="submit">
+    <mat-icon>search</mat-icon>Suche
+  </button>
+</form>
