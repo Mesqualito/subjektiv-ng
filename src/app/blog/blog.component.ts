@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
-import {BlogEntry, BlogService} from "../shared/services/BlogService";
+import {BlogEntry, BlogService} from "../shared/services/blogservice";
 import {filter, map, switchMap, tap} from "rxjs/operators";
 import {log} from "util";
 
