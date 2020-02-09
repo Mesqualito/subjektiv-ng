@@ -11,9 +11,6 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 
 @NgModule({
   declarations: [BlogComponent, BlogSuggestionComponent, BlogDetailComponent],
-  exports: [
-    BlogComponent
-  ],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -22,7 +19,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     NgMaterialModule,
     FormsModule,
     FlexLayoutModule
-  ]
+  ],
+  providers: []
 })
 export class BlogModule {
 }

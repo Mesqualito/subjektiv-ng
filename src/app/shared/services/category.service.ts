@@ -19,6 +19,7 @@ export class CategoryService {
   jsons: any;
   url = '/data/kategorien.json';
 
+  // HttpClient needs to be injected => add @Injectable to class...
   constructor(private _http: HttpClient) {
   }
 

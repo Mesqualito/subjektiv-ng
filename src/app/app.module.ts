@@ -8,11 +8,11 @@ import {FooterComponent} from './footer/footer.component';
 import {SearchComponent} from './search/search.component';
 import {NgMaterialModule} from "./ng-material/ng-material.module";
 import {HttpClientModule} from "@angular/common/http";
-import {AusgabeService} from "./shared/services/ausgabe.service";
 import {RouterModule} from "@angular/router";
-import {CategoryService} from "./shared/services/category.service";
-import {BlogService} from "./shared/services/blog.service";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {SHARED_SERVICES} from "./shared/services";
+import {environment} from "../environments/environment";
+import {API_BASE_URL, WS_URL} from "./app.tokens";
 
 @NgModule({
   declarations: [
@@ -28,7 +28,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [AusgabeService, CategoryService, BlogService],
+  providers: [
+  ...SHARED_SERVICES,
+  { provide: API_BASE_URL, useValue: environment.apiBaseUrl },
+  { provide: WS_URL, useValue: environment.wsUrl }
+],
   exports: [],
   bootstrap: [AppComponent]
 })

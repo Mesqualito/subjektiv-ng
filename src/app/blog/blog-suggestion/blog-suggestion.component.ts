@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {BlogEntry} from "../../shared/services/blog.service";
+import {BlogEntry} from "../../shared/services/BlogService";
 import {Observable} from "rxjs";
 import {MediaObserver} from "@angular/flex-layout";
 import {map, startWith} from "rxjs/operators";
