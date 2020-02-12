@@ -1,16 +1,17 @@
-<div class="wrapper" ngClass.lt-md="wrapper--lt-md" ngClass.gt-md="wrapper--gt-md" fxLayout="row" fxLayoutAlign="center"
+------------------ Test top ausgabe-detail.component.html ------------------
+<div *ngIf="ausgabe" class="wrapper" ngClass.lt-md="wrapper--lt-md" ngClass.gt-md="wrapper--gt-md" fxLayout="row" fxLayoutAlign="center"
      fxLayout.xs="column" fxLayoutAlign.xs="center center">
-  <div fxFlex="50%">
-    <img class="thumbnail" [attr.alt]="ausgabe.title" [attr.src]="ausgabe.imageUrl">
+  <div fxFlex="20%">
+    <img class="thumbnail" [attr.alt]="ausgabe?.title" [attr.src]="ausgabe?.imageUrl">
   </div>
-  <div Flex="50%">
+  <div Flex="80%">
     <div class="info">
       <h1 class="info__title">{{ausgabe?.title}}</h1>
       <div class="info__description">{{ausgabe?.description}}</div>
       Erscheinungsdatum: {{ausgabe?.releaseDate | date: 'MM.yyyy'}}<br>
       Seitenzahl: {{ausgabe?.pageCount}}<br>
       Dateigröße: {{ausgabe?.fileSize}}<br>
-      Artikel: {{ausgabe?.searchStrings}} uvm.
+      Artikel: {{ausgabe?.searchStrings}} (uvm.)
     </div>
     <div class="info__download">
       <button class="info__download-button" mat-raised-button color="accent">
@@ -19,3 +20,4 @@
     </div>
   </div>
 </div>
+<br>------------------ Test bottom ausgabe-detail.component.html ------------------

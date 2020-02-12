@@ -6,7 +6,6 @@ import {NgMaterialModule} from "../ng-material/ng-material.module";
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {BlogEntry} from "../shared/services/blog.service";
 import {BlogComponent} from "./blog.component";
 
 

@@ -15,7 +15,7 @@
 }
 
 .wrapper--gt-md {
-  padding: 128px 24px;
+  padding: 64px 24px;
 }
 
 .thumbnail {
@@ -30,7 +30,7 @@
 
 .info__title {
   color: mat-color($sub-foreground, text);
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Special Elite', sans-serif;
   font-size: mat-font-size($sub-typography, display-2);
   font-weight: mat-font-weight($sub-typography, display-4);
   line-height: mat-line-height($sub-typography, display-2);
@@ -44,43 +44,4 @@
   line-height: mat-line-height($sub-typography, subheading-1);
   border-bottom: solid 1px #ddd;
   padding-bottom: 24px;
-}
-
-.info__bid {
-  margin: 24px 0;
-}
-
-.info__bid-value {
-  color: mat-color($sub-foreground, text);
-  font-family: 'Titillium Web', sans-serif;
-  font-weight: 600;
-  font-size: 72px;
-  line-height: 1em;
-}
-.info__bid-value--lt-md {
-  font-size: 48px;
-}
-
-.info__bid-value-decimal {
-  color: mat-color($sub-foreground, text);
-  font-family: 'Titillium Web', sans-serif;
-  font-weight: 600;
-  font-size: 36px;
-  margin-left: -.1em;
-}
-
-.info__bid-value-decimal--lt-md {
-  font-size: 24px;
-}
-
-.info__bid-label {
-  color: mat-color($sub-foreground, hint-text);
-  font-family: 'Titillium Web', sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-  margin-left: 16px;
-}
-
-.info__bid-button {
-  width: 100%;
 }

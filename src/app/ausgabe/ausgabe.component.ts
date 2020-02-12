@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {Ausgabe, AusgabeService} from "../shared/services/ausgabe.service";
-import {ActivatedRoute} from "@angular/router";
-import {filter, map, switchMap} from "rxjs/operators";
+import {map} from "rxjs/operators";
+import {MediaObserver} from "@angular/flex-layout";
 
 @Component({
   selector: 'app-ausgabe',
@@ -10,13 +10,22 @@ import {filter, map, switchMap} from "rxjs/operators";
   styleUrls: ['./ausgabe.component.scss']
 })
 export class AusgabeComponent {
-  ausgabe$: Observable<Ausgabe>;
 
-  constructor(private _route: ActivatedRoute, private _ausgabeService: AusgabeService) {
-    this.ausgabe$ = this._route.paramMap.pipe(
-      map(params => parseInt(params.get('ausgabeId') || '', 10)),
-      filter(ausgabeId => !!ausgabeId),
-      switchMap(ausgabeId => this._ausgabeService.getById(ausgabeId))
+  readonly column$: Observable<number>;
+  readonly ausgaben$: Observable<Ausgabe[]>;
+
+  readonly breakpointsToColumnsNumber = new Map([
+    [ 'xs', 1 ],
+    [ 'sm', 2 ],
+    [ 'md', 4 ],
+    [ 'lg', 6 ],
+    [ 'xl', 10 ]
+  ]);
+
+  constructor(private media: MediaObserver, private ausgabeService: AusgabeService) {
+    this.ausgaben$ = this.ausgabeService.getAll();
+    this.column$ = this.media.asObservable().pipe(
+      map(mc => <number>this.breakpointsToColumnsNumber.get(mc[0].mqAlias))
     );
   }
 }

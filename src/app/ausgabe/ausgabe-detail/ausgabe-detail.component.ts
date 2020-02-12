@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 import {Ausgabe} from "../../shared/services/ausgabe.service";
 
 @Component({
@@ -6,8 +7,15 @@ import {Ausgabe} from "../../shared/services/ausgabe.service";
   templateUrl: './ausgabe-detail.component.html',
   styleUrls: ['./ausgabe-detail.component.scss']
 })
-export class AusgabeDetailComponent {
+export class AusgabeDetailComponent implements OnInit {
 
-  @Input() ausgabe: Ausgabe;
+  ausgabe: Ausgabe;
 
+  constructor(protected activatedRoute: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.activatedRoute.data.subscribe(({ausgabe}) => {
+      this.ausgabe = ausgabe;
+    });
+  }
 }

@@ -1,4 +1,14 @@
-<div class="wrapper" fxLayout="column" fxLayout.gt-md="row-reverse">
-  <app-ausgabe-detail fxFlex="auto" *ngIf="ausgabe$ | async as ausgabe" [ausgabe]="ausgabe">
-  </app-ausgabe-detail>
+<div class="grid-list-container">
+  <mat-grid-list [cols]="column$ | async" gutterSize="16">
+    <mat-grid-tile class="tile" *ngFor="let ausgabe of ausgaben$ | async">
+      <a class="tile__content" fxLayout="column" fxLayoutAlign="center center" [routerLink]="['/ausgabe', ausgabe.id, 'view' ]">
+        <span class="tile__number-tag" ngClass.lt-md="tile__number-tag--lt-md">
+          {{ausgabe.releaseDate | date: 'MM.yyyy'}}
+        </span>
+        <div class="tile__thumbnail" [ngStyle]="{'background-image': 'url(' + ausgabe.imageUrl + ')'}"></div>
+        <div class="tile__title" ngClass.xs="tile__title--xs" ngClass.sm="tile__title--sm">{{ausgabe.title}}<br>
+          {{ausgabe.description}}</div>
+      </a>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
