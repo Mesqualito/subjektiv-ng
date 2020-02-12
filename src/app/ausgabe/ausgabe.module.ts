@@ -5,7 +5,6 @@ import {AusgabeComponent} from './ausgabe.component';
 import {AusgabeDetailComponent} from './ausgabe-detail/ausgabe-detail.component';
 import {MatButtonModule} from "@angular/material/button";
 import {NgMaterialModule} from "../ng-material/ng-material.module";
-import {ausgabeRoute} from "./ausgabe-detail/ausgabe.route";
 import {RouterModule} from "@angular/router";
 
 
@@ -13,10 +12,14 @@ import {RouterModule} from "@angular/router";
   declarations: [AusgabeComponent, AusgabeDetailComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(ausgabeRoute),
+    RouterModule.forChild([
+      {path: '', component: AusgabeComponent},
+      {path: ':ausgabeId/view', component: AusgabeDetailComponent}
+    ]),
     FlexLayoutModule,
     MatButtonModule,
-    NgMaterialModule,
-  ]
+    NgMaterialModule
+  ],
+  providers: []
 })
 export class AusgabeModule { }

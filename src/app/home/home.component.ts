@@ -21,6 +21,6 @@ export class HomeComponent implements OnInit {
 
   goToLatestBlogEntry(): void {
     this.blogEntryMaxId$ = this._blogService.getMaxId();
-    this.blogEntryMaxId$.subscribe(blogEntryId => this._router.navigate(["/blogeintrag/" + blogEntryId]));
+    this.blogEntryMaxId$.subscribe(blogEntryId => this._router.navigate(["/blogeintrag/" + blogEntryId + "/view"]));
   }
 }

@@ -3,7 +3,7 @@
 </div>
 <mat-grid-list [cols]="columns$ | async" gutterSize="16px" rowHeight="100px">
   <mat-grid-tile class="tile" *ngFor="let blogEntry of blogEntries">
-    <a fxLayout="column" [routerLink]="['/blogeintrag', blogEntry.id]">
+    <a fxLayout="column" [routerLink]="['/blogeintrag', blogEntry.id, 'view' ]">
       <div class="entry__title">
         Titel: {{blogEntry.title}}<br>
         Kategorie: {{blogEntry.category}}

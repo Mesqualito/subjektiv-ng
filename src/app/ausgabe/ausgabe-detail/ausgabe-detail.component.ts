@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
 import {IAusgabe} from "../../shared/model/ausgabe.model";
+import {ActivatedRoute} from "@angular/router";
+import {AusgabeService} from "../../shared/services/ausgabe.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-ausgabe-detail',
@@ -9,13 +11,20 @@ import {IAusgabe} from "../../shared/model/ausgabe.model";
 })
 export class AusgabeDetailComponent implements OnInit {
 
-  ausgabe: IAusgabe;
+  ausgabe$: Observable<IAusgabe>;
+  private _ausgabeId: number;
 
-  constructor(protected activatedRoute: ActivatedRoute) {}
+  constructor(private _route: ActivatedRoute, private _ausgabeService: AusgabeService) {
 
-  ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ausgabe}) => {
-      this.ausgabe = ausgabe;
-    });
+    /*
+    this._ausgabeId = parseInt(this._route.paramMap.subscribe(params =>
+      this._ausgabeId = params.get('ausgabeId'));
+     */
+    this._ausgabeId = parseInt(this._route.snapshot.paramMap.get('ausgabeId'));
+    this.ausgabe$ = this._ausgabeService.getById(this._ausgabeId);
+  }
+
+  ngOnInit() {
   }
 }
+

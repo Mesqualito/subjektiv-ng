@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {BlogService} from "../shared/services/blog.service";
@@ -11,7 +11,7 @@ import {IBlogEntry} from '../shared/model/blog.model';
   templateUrl: './blog.component.html',
   styleUrls: ['./blog.component.scss']
 })
-export class BlogComponent implements OnInit {
+export class BlogComponent {
 
   blogEntry$: Observable<IBlogEntry>;
   suggestedBlogEntries$: Observable<IBlogEntry[]>;
@@ -20,10 +20,6 @@ export class BlogComponent implements OnInit {
     private _route: ActivatedRoute,
     private _blogService: BlogService) {
     this.loadPageEntries();
-  }
-
-  ngOnInit(): void {
-
   }
 
   loadPageEntries(): void {

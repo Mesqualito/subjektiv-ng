@@ -7,9 +7,7 @@ import {IBlogEntry} from "../model/blog.model";
 
 export abstract class BlogService {
   abstract getAll(): Observable<IBlogEntry[]>;
-
   abstract getById(blogEntryId: number): Observable<IBlogEntry>;
-
   abstract getMaxId(): Observable<number>;
 }
 
