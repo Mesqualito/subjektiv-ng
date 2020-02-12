@@ -1,9 +1,9 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {Observable, from, of} from "rxjs";
-import {ActivatedRoute, ParamMap} from "@angular/router";
-import {BlogEntry, BlogService} from "../shared/services/blog.service";
-import {filter, map, switchMap, tap} from "rxjs/operators";
-import {log} from "util";
+import {Component, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
+import {BlogService} from "../shared/services/blog.service";
+import {filter, map, switchMap} from "rxjs/operators";
+import {IBlogEntry} from '../shared/model/blog.model';
 
 
 @Component({
@@ -13,8 +13,8 @@ import {log} from "util";
 })
 export class BlogComponent implements OnInit {
 
-  blogEntry$: Observable<BlogEntry>;
-  suggestedBlogEntries$: Observable<BlogEntry[]>;
+  blogEntry$: Observable<IBlogEntry>;
+  suggestedBlogEntries$: Observable<IBlogEntry[]>;
 
   constructor(
     private _route: ActivatedRoute,

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Ausgabe} from "../../shared/services/ausgabe.service";
+import {IAusgabe} from "../../shared/model/ausgabe.model";
 
 @Component({
   selector: 'app-ausgabe-detail',
@@ -9,7 +9,7 @@ import {Ausgabe} from "../../shared/services/ausgabe.service";
 })
 export class AusgabeDetailComponent implements OnInit {
 
-  ausgabe: Ausgabe;
+  ausgabe: IAusgabe;
 
   constructor(protected activatedRoute: ActivatedRoute) {}
 

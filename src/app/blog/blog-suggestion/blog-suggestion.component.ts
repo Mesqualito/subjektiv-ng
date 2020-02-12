@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
-import {BlogEntry} from "../../shared/services/blog.service";
 import {Observable} from "rxjs";
 import {MediaObserver} from "@angular/flex-layout";
 import {map, startWith} from "rxjs/operators";
+import {IBlogEntry} from "../../shared/model/blog.model";
 
 @Component({
   selector: 'app-blog-suggestion',
@@ -11,7 +11,7 @@ import {map, startWith} from "rxjs/operators";
 })
 export class BlogSuggestionComponent {
 
-  @Input() blogEntries: BlogEntry[];
+  @Input() blogEntries: IBlogEntry[];
 
   readonly columns$: Observable<number>;
   readonly breakPointsToColumnsNumber = new Map([

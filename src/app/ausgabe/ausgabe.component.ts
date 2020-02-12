@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {Observable} from "rxjs";
-import {Ausgabe, AusgabeService} from "../shared/services/ausgabe.service";
+import {AusgabeService} from "../shared/services/ausgabe.service";
 import {map} from "rxjs/operators";
 import {MediaObserver} from "@angular/flex-layout";
+import {IAusgabe} from "../shared/model/ausgabe.model";
 
 @Component({
   selector: 'app-ausgabe',
@@ -12,7 +13,7 @@ import {MediaObserver} from "@angular/flex-layout";
 export class AusgabeComponent {
 
   readonly column$: Observable<number>;
-  readonly ausgaben$: Observable<Ausgabe[]>;
+  readonly ausgaben$: Observable<IAusgabe[]>;
 
   readonly breakpointsToColumnsNumber = new Map([
     [ 'xs', 1 ],
