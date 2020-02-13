@@ -1,21 +1,41 @@
-<div *ngIf="ausgabe$ | async as ausgabe" class="wrapper" ngClass.lt-md="wrapper--lt-md" ngClass.gt-md="wrapper--gt-md" fxLayout="row" fxLayoutAlign="center"
-     fxLayout.xs="column" fxLayoutAlign.xs="center center">
-  <div fxFlex="20%">
-    <img class="thumbnail" [attr.alt]="ausgabe.title" [attr.src]="ausgabe.imageUrl">
-  </div>
-  <div fxFlex="80%">
-    <div class="info">
-      <h1 class="info__title">{{ausgabe.title}}</h1>
-      <div class="info__description">{{ausgabe.description}}</div>
-      <strong>Erscheinungsdatum:</strong> {{ausgabe.releaseDate | date: 'MM.yyyy'}}<br>
-      <strong>Seitenzahl:</strong> {{ausgabe.pageCount}}<br>
-      <strong>Dateigröße:</strong> {{ausgabe.fileSize}}<br>
-      <strong>Artikel:</strong><br>{{ausgabe.searchStrings}} (uvm.)
+<div *ngIf="ausgabe$ | async as ausgabe" class="wrapper" ngClass.lt-md="wrapper--lt-md" ngClass.gt-md="wrapper--gt-md"
+     fxLayout="column">
+  <div>
+    <div *ngIf="isPrev || isNext" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxLayoutAlign.xs="center center">
+      <div fxFlex="50%">
+        <button *ngIf="isPrev" mat-icon-button (click)="previous()">
+          <mat-icon>arrow_left</mat-icon>
+          <span>Vorherige Ausgabe</span>
+        </button>
+      </div>
+      <div fxFlex="50%">
+        <button *ngIf="isNext" mat-icon-button (click)="next()">
+          <span>Nächste Ausgabe</span>
+          <mat-icon>arrow_right</mat-icon>
+        </button>
+      </div>
     </div>
-    <div class="info__download">
-      <button class="info__download-button" mat-raised-button color="accent">
-        <mat-icon>account_box</mat-icon>
-        <span>Öffnen</span></button>
+  </div>
+  <div>
+    <div fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxLayoutAlign.xs="center center">
+      <div fxFlex="20%">
+        <img class="thumbnail" [attr.alt]="ausgabe.title" [attr.src]="ausgabe.imageUrl">
+      </div>
+      <div fxFlex="80%">
+        <div class="info">
+          <h1 class="info__title">{{ausgabe.title}}</h1>
+          <div class="info__description">{{ausgabe.description}}</div>
+          <strong>Erscheinungsdatum:</strong> {{ausgabe.releaseDate | date: 'MM.yyyy'}}<br>
+          <strong>Seitenzahl:</strong> {{ausgabe.pageCount}}<br>
+          <strong>Dateigröße:</strong> {{ausgabe.fileSize}}<br>
+          <strong>Artikel:</strong><br>{{ausgabe.searchStrings}} (uvm.)
+        </div>
+        <div class="info__download">
+          <button class="info__download-button" mat-raised-button color="accent">
+            <mat-icon>account_box</mat-icon>
+            <span>Öffnen</span></button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

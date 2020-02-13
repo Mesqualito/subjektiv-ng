@@ -28,14 +28,14 @@
     "filePath": "data/files/subjektiv2.pdf"
   },
   {
-    "id": 1,
+    "id": 3,
     "chronoOrderNo": 3,
     "title": "»subjektiv!« No. 3",
     "description": "",
     "releaseDate": "1999-07-01T00:00:00.000Z",
     "dateCreated": "2020-02-09T00:08:00.000Z",
     "dateModified": "2020-02-09T00:08:00.000Z",
-    "searchStrings": "Kampf gegen Konsum; Gedichte & Gedanken; Heute-Gestern-Morgen",
+    "searchStrings": "Kampf gegen Konsum; Gedichte und Gedanken; Heute-Gestern-Morgen",
     "pageCount": 20,
     "fileSize": 356,
     "imageUrl": "data/img/subj3.gif",

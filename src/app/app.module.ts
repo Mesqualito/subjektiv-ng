@@ -25,7 +25,7 @@ import {API_BASE_URL, WS_URL} from "./app.tokens";
     BrowserModule,
     NgMaterialModule,
     HttpClientModule,
-    RouterModule.forRoot(routes,  { enableTracing: false }),
+    RouterModule.forRoot(routes,  { enableTracing: false , onSameUrlNavigation: "reload"}),
     BrowserAnimationsModule
   ],
   providers: [
