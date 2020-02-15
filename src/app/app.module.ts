@@ -5,7 +5,6 @@ import {routes} from './app-routing';
 import {AppComponent} from './app.component';
 import {NavbarTopComponent} from './navbar-top/navbar-top.component';
 import {FooterComponent} from './footer/footer.component';
-import {SearchComponent} from './search/search.component';
 import {NgMaterialModule} from "./ng-material/ng-material.module";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
@@ -18,8 +17,7 @@ import {API_BASE_URL, WS_URL} from "./app.tokens";
   declarations: [
     AppComponent,
     NavbarTopComponent,
-    FooterComponent,
-    SearchComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +31,7 @@ import {API_BASE_URL, WS_URL} from "./app.tokens";
   { provide: API_BASE_URL, useValue: environment.apiBaseUrl },
   { provide: WS_URL, useValue: environment.wsUrl }
 ],
-  exports: [],
+    exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

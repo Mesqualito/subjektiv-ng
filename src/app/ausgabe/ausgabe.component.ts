@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {AusgabeService} from "../shared/services/ausgabe.service";
-import {map} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
 import {MediaObserver} from "@angular/flex-layout";
 import {IAusgabe} from "../shared/model/ausgabe.model";
 import {ActivatedRoute} from "@angular/router";
@@ -15,6 +15,8 @@ export class AusgabeComponent {
 
   column$: Observable<number>;
   ausgaben$: Observable<IAusgabe[]>;
+  ausgaben: IAusgabe[];
+  errorMsg: string;
 
 
   readonly breakpointsToColumnsNumber = new Map([
@@ -29,13 +31,30 @@ export class AusgabeComponent {
     private _route: ActivatedRoute,
     private _ausgabeService: AusgabeService,
     private _media: MediaObserver) {
-    this.loadPageEntries();
+    this.getAusgaben();
   }
 
-  loadPageEntries(): void {
-    this.ausgaben$ = this._ausgabeService.getAll();
+  // via subscribe, without using async-pipe
+  getAusgabenSub(): void {
+    this.errorMsg = '';
+      this._ausgabeService.getAllSub().subscribe(
+        iAusgabe => (this.ausgaben = iAusgabe),
+        err => this.errorMsg = err.Message
+      );
+  }
+
+  // no longer subscribing to get data - we use the async-pipe
+  getAusgaben(): void {
+    this.errorMsg = '';
+    this.ausgaben$ = this._ausgabeService.getAllSub().pipe(
+      catchError(errorMessage => {
+        this.errorMsg = errorMessage;
+        return []; // return empty list for display
+      })
+    );
     this.column$ = this._media.asObservable().pipe(
       map(mc => <number>this.breakpointsToColumnsNumber.get(mc[0].mqAlias))
     );
   }
+
 }

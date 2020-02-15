@@ -10,20 +10,12 @@
   </div>
 </mat-toolbar>
 <mat-menu #topMenu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>account_box</mat-icon>
-    <span>Profil</span>
+  <button mat-menu-item routerLink="/">
+    <mat-icon>info</mat-icon>
+    <span>Startseite</span>
   </button>
   <button mat-menu-item routerLink="/ausgabe">
     <mat-icon>play_for_work</mat-icon>
     <span>Print-Ausgaben</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>accessibility_new</mat-icon>
-    <span>Kontakt</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>info</mat-icon>
-    <span>Info</span>
   </button>
 </mat-menu>

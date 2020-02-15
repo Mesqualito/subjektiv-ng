@@ -1,3 +1,4 @@
+<app-search></app-search>
 <div class="grid-list-container">
   <mat-grid-list [cols]="column$ | async" gutterSize="16">
     <mat-grid-tile class="tile" *ngFor="let ausgabe of ausgaben$ | async">
@@ -10,6 +11,6 @@
           Bemerkung: {{ausgabe.description}}</div>
       </a>
     </mat-grid-tile>
+    <div *ngIf="errorMsg" class="tile__error">{{errorMsg}}</div>
   </mat-grid-list>
 </div>
-

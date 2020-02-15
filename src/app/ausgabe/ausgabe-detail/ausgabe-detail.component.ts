@@ -12,11 +12,13 @@ import {Observable} from "rxjs";
 export class AusgabeDetailComponent implements OnInit {
 
   ausgabe$: Observable<IAusgabe>;
+  ausgabe: IAusgabe;
   private _ausgabeId: number;
   maxAusgaben$: Observable<number>;
   private _maxNum: number;
   isPrev = true;
   isNext = true;
+  errorMsg = '';
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _ausgabeService: AusgabeService) {
     this._route.paramMap.subscribe(
@@ -39,11 +41,13 @@ export class AusgabeDetailComponent implements OnInit {
     this.maxAusgaben$.subscribe(maxNum => this._maxNum = maxNum);
   }
 
+
   previous(): void {
     if (this._ausgabeId > 1) {
       this._ausgabeId = this._ausgabeId - 1;
       this.ausgabe$ = this.getAusgabe(this._ausgabeId);
-      if(this._ausgabeId < 2) {
+      this._router.navigate(['ausgabe', {id: this._ausgabeId}, 'view']);
+      if (this._ausgabeId < 2) {
         this.isPrev = false;
       }
     } else {
@@ -59,13 +63,14 @@ export class AusgabeDetailComponent implements OnInit {
     if (this._ausgabeId < this._maxNum) {
       this._ausgabeId = this._ausgabeId + 1;
       this.ausgabe$ = this.getAusgabe(this._ausgabeId);
-      if(this._ausgabeId > this._maxNum - 1) {
+      this._router.navigate(['ausgabe', {id: this._ausgabeId}, 'view']);
+      if (this._ausgabeId > this._maxNum - 1) {
         this.isNext = false;
       }
     } else {
       this.isNext = false;
     }
-    if(this._ausgabeId > 1) {
+    if (this._ausgabeId > 1) {
       this.isPrev = true;
     }
   }

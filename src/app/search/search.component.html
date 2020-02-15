@@ -1,15 +1,25 @@
-<form #firstForm="ngForm">
-  <mat-form-field>
-    <input matInput type="text" placeholder="subjektiv! Ausgabe" name="ausgabe" ngModel>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput type="text" placeholder="Artikel" name="artikel" ngModel>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput type="text" placeholder="Suche im Text" name="wort" ngModel>
-  </mat-form-field>
+<div>
+  <div>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Suche in Keywords" [formControl]="searchAusgabe">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Suche in Artikeln" [formControl]="searchArtikel">
+    </mat-form-field>
 
-  <button mat-raised-button color="accent" type="submit">
-    <mat-icon>search</mat-icon>Suche
-  </button>
-</form>
+    <div *ngIf="errorMsg" class="error">{{errorMsg}}</div>
+
+    <button mat-raised-button color="accent" type="submit">
+      <mat-icon>search</mat-icon>
+      Suche
+    </button>
+  </div>
+  <div>
+    <ul>
+      <li *ngFor="let ausgabe of ausgaben$ | async" [title]="ausgabe">
+        <span *ngIf="!ausgabe">{{ausgabe.title}}</span>
+        <a *ngIf="ausgabe.filePath" [href]="ausgabe.filePath" target="_blank">{{ausgabe.title}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
