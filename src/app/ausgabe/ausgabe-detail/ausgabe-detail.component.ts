@@ -1,26 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Location} from '@angular/common';
 import {IAusgabe} from "../../shared/model/ausgabe.model";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AusgabeService} from "../../shared/services/ausgabe.service";
-import {combineLatest, Observable, of} from "rxjs";
-import {map} from "rxjs/operators";
+import {Observable, of} from "rxjs";
+
 
 @Component({
   selector: 'app-ausgabe-detail',
   templateUrl: './ausgabe-detail.component.html',
   styleUrls: ['./ausgabe-detail.component.scss']
 })
-export class AusgabeDetailComponent implements OnInit {
+export class AusgabeDetailComponent {
+
+  private _ausgabeId: number;
+  private _maxId: number;
 
   ausgabe$: Observable<IAusgabe>;
-  ausgabe: IAusgabe;
-  private _ausgabeId: number;
-  maxAusgaben$: Observable<number>;
-  private _maxNum: number;
   isPrev$: Observable<boolean>;
   isNext$: Observable<boolean>;
-  errorMsg = '';
+  maxNum$: Observable<number>;
 
   constructor(
     private _route: ActivatedRoute,
@@ -28,62 +27,41 @@ export class AusgabeDetailComponent implements OnInit {
     private _ausgabeService: AusgabeService,
     private _location: Location) {
     this._route.paramMap.subscribe(
-      params => this._ausgabeId = parseInt(params.get('ausgabeId')));
-    this.getMaxAusgaben();
+      params => {
+        this._ausgabeId = parseInt(params.get('ausgabeId'));
+        this._maxId = parseInt(params.get('maxId'))
+      });
+    this.maxNum$ = this._ausgabeService.getMaxId();
+    this.navigate();
   }
 
-  ngOnInit(): void {
-    this.checkNavigation();
+  previous(maxId: number): void {
+    if (this._ausgabeId > 1) {
+      this._ausgabeId = this._ausgabeId - 1;
+      this.navigate(maxId);
+    }
+  }
+
+  next(maxId: number): void {
+    if (this._ausgabeId < maxId) {
+      this._ausgabeId = this._ausgabeId + 1;
+      this.navigate(maxId);
+    }
+  }
+
+  navigate(maxId: number = this._maxId): void {
+    this.ausgabe$ = this.getAusgabe(this._ausgabeId);
+    this._location.replaceState('ausgabe/' + this._ausgabeId + '/' + maxId + '/view');
+    this.setNavArrows(maxId);
+  }
+
+  setNavArrows(maxId: number) {
+    this._ausgabeId > 1 ? this.isPrev$ = of(true) : this.isPrev$ = of(false);
+    this._ausgabeId < maxId ? this.isNext$ = of(true) : this.isNext$ = of(false);
   }
 
   getAusgabe(ausgabeId: number): Observable<IAusgabe> {
     return this._ausgabeService.getById(ausgabeId);
-  }
-
-  // subscribe to Observable
-  getMaxAusgaben(): void {
-    this.maxAusgaben$ = this._ausgabeService.getMaxId();
-    this.maxAusgaben$.subscribe(maxNum => this._maxNum = maxNum);
-  }
-
-  checkNavigation(): void {
-    this.ausgabe$ = this.getAusgabe(this._ausgabeId);
-    this._location.replaceState('ausgabe/' + this._ausgabeId + '/view');
-    if (this._ausgabeId > 1) {
-      this.isPrev$ = of(true);
-    } else {
-      this.isPrev$ = of(false);
-    }
-    if (this._ausgabeId < this._maxNum) {
-      this.isNext$ = of(true);
-    } else {
-      this.isNext$ = of(false);
-    }
-  }
-
-  previous(): void {
-    if (this._ausgabeId > 1) {
-      this._ausgabeId = this._ausgabeId - 1;
-      this.checkNavigation();
-    } else {
-      this.isPrev$ = of(false);
-    }
-  }
-
-  next(): void {
-    this.getMaxAusgaben();
-    if (this._ausgabeId < this._maxNum) {
-      this._ausgabeId = this._ausgabeId + 1;
-      this.checkNavigation();
-    } else {
-      this.isNext$ = of(false);
-    }
-  }
-
-  get isAny$(): Observable<boolean> {
-    return combineLatest(this.isPrev$, this.isNext$).pipe(
-        map(([isPrev, isNext] ) => (isPrev || isNext))
-    );
   }
 }
 

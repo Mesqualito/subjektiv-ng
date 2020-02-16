@@ -16,7 +16,7 @@ import {SearchAusgabeResultsComponent} from './search-ausgabe-results/search-aus
     CommonModule,
     RouterModule.forChild([
       {path: '', component: AusgabeComponent},
-      {path: ':ausgabeId/view', component: AusgabeDetailComponent}
+      {path: ':ausgabeId/:maxId/view', component: AusgabeDetailComponent}
     ]),
     FlexLayoutModule,
     MatButtonModule,
