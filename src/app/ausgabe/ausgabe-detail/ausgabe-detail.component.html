@@ -1,15 +1,15 @@
 <div *ngIf="ausgabe$ | async as ausgabe" class="wrapper" ngClass.lt-md="wrapper--lt-md" ngClass.gt-md="wrapper--gt-md"
      fxLayout="column">
   <div>
-    <div *ngIf="isPrev || isNext" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxLayoutAlign.xs="center center">
+    <div *ngIf="isAny$ | async" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxLayoutAlign.xs="center center">
       <div fxFlex="50%">
-        <button *ngIf="isPrev" mat-icon-button (click)="previous()">
+        <button *ngIf="isPrev$ | async" mat-icon-button (click)="previous()">
           <mat-icon>arrow_left</mat-icon>
           <span>Vorherige Ausgabe</span>
         </button>
       </div>
       <div fxFlex="50%">
-        <button *ngIf="isNext" mat-icon-button (click)="next()">
+        <button *ngIf="isNext$ | async" mat-icon-button (click)="next()">
           <span>Nächste Ausgabe</span>
           <mat-icon>arrow_right</mat-icon>
         </button>
