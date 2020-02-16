@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Location} from '@angular/common';
 import {IAusgabe} from "../../shared/model/ausgabe.model";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -10,15 +10,15 @@ import {Observable} from "rxjs";
   templateUrl: './ausgabe-detail.component.html',
   styleUrls: ['./ausgabe-detail.component.scss']
 })
-export class AusgabeDetailComponent implements OnInit {
+export class AusgabeDetailComponent {
 
   ausgabe$: Observable<IAusgabe>;
   ausgabe: IAusgabe;
   private _ausgabeId: number;
   maxAusgaben$: Observable<number>;
   private _maxNum: number;
-  isPrev = true;
-  isNext = true;
+  isPrev: boolean;
+  isNext: boolean;
   errorMsg = '';
 
   constructor(
@@ -28,38 +28,44 @@ export class AusgabeDetailComponent implements OnInit {
     private _location: Location) {
     this._route.paramMap.subscribe(
       params => this._ausgabeId = parseInt(params.get('ausgabeId')));
-
     this.ausgabe$ = this.getAusgabe(this._ausgabeId);
-  }
-
-  ngOnInit() {
-    // set Observable to render
     this.getMaxAusgaben();
+    this.checkNavigation();
   }
 
   getAusgabe(ausgabeId: number): Observable<IAusgabe> {
     return this._ausgabeService.getById(ausgabeId);
   }
 
+  // subscribe to Observable
   getMaxAusgaben(): void {
     this.maxAusgaben$ = this._ausgabeService.getMaxId();
     this.maxAusgaben$.subscribe(maxNum => this._maxNum = maxNum);
   }
 
+  checkNavigation(): void {
+    this.ausgabe$ = this.getAusgabe(this._ausgabeId);
+    this._location.replaceState('ausgabe/' + this._ausgabeId + '/view');
+    if (this._ausgabeId < this._maxNum) {
+      this.isNext = true;
+    }
+    if (this._ausgabeId > 1) {
+      this.isPrev = true;
+    } else {
+      this.isPrev = false;
+    }
+
+    if (this._ausgabeId >= this._maxNum) {
+      this.isNext = false;
+    }
+  }
 
   previous(): void {
     if (this._ausgabeId > 1) {
       this._ausgabeId = this._ausgabeId - 1;
-      this.ausgabe$ = this.getAusgabe(this._ausgabeId);
-      this._location.replaceState('ausgabe/' + this._ausgabeId + '/view');
-      if (this._ausgabeId < 2) {
-        this.isPrev = false;
-      }
+      this.checkNavigation();
     } else {
       this.isPrev = false;
-    }
-    if (this._ausgabeId < this._maxNum) {
-      this.isNext = true;
     }
   }
 
@@ -67,16 +73,9 @@ export class AusgabeDetailComponent implements OnInit {
     this.getMaxAusgaben();
     if (this._ausgabeId < this._maxNum) {
       this._ausgabeId = this._ausgabeId + 1;
-      this.ausgabe$ = this.getAusgabe(this._ausgabeId);
-      this._location.replaceState('ausgabe/' + this._ausgabeId + '/view');
-      if (this._ausgabeId > this._maxNum - 1) {
-        this.isNext = false;
-      }
+      this.checkNavigation();
     } else {
       this.isNext = false;
-    }
-    if (this._ausgabeId > 1) {
-      this.isPrev = true;
     }
   }
 }
