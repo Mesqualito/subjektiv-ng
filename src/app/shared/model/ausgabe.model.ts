@@ -1,5 +1,12 @@
 import {IBasics} from "./basics.model";
 
+export interface AusgabeSearchParams {
+  searchString?: string;
+  fullText?: string;
+  minReleaseDate?: Date;
+  maxReleaseDate?: Date;
+}
+
 export interface IAusgabe extends IBasics {
 
   title?: string;
