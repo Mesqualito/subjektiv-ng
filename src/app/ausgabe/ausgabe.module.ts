@@ -1,27 +1,36 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {AusgabeComponent} from './ausgabe.component';
 import {AusgabeDetailComponent} from './ausgabe-detail/ausgabe-detail.component';
 import {MatButtonModule} from "@angular/material/button";
 import {NgMaterialModule} from "../ng-material/ng-material.module";
-import {RouterModule} from "@angular/router";
+import {Route, RouterModule} from "@angular/router";
 import {AusgabeGridComponent} from './ausgabe-grid/ausgabe-grid.component';
 import {SearchAusgabeResultsComponent} from './search-ausgabe-results/search-ausgabe-results.component';
 
 
+const routes: Route[] = [
+  {path: '', pathMatch: 'full', redirectTo: 'categories'},
+  {path: 'search-results', component: SearchAusgabeResultsComponent},
+  {
+    path: 'categories',
+    children: [
+      {path: '', pathMatch: 'full', redirectTo: 'all'},
+      {path: ':category', component: HasToBeReplacedComponent},
+    ]
+  }
+];
+
 @NgModule({
-  declarations: [AusgabeComponent, AusgabeDetailComponent, AusgabeGridComponent, SearchAusgabeResultsComponent],
+  declarations: [AusgabeDetailComponent, AusgabeGridComponent, SearchAusgabeResultsComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild([
-      {path: '', component: AusgabeComponent},
-      {path: ':ausgabeId/:maxId/view', component: AusgabeDetailComponent}
-    ]),
+    RouterModule.forChild(routes),
     FlexLayoutModule,
     MatButtonModule,
     NgMaterialModule
   ],
-  providers: [ Location ]
+  providers: [Location]
 })
-export class AusgabeModule { }
+export class AusgabeModule {
+}
