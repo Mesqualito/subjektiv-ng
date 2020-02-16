@@ -7,10 +7,12 @@ import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {BlogComponent} from "./blog.component";
+import {CategoriesComponent} from './categories/categories.component';
+import {SearchBlogResultsComponent} from './search-blog-results/search-blog-results.component';
 
 
 @NgModule({
-  declarations: [BlogComponent, BlogSuggestionComponent, BlogDetailComponent],
+  declarations: [BlogComponent, BlogSuggestionComponent, BlogDetailComponent, CategoriesComponent, SearchBlogResultsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([

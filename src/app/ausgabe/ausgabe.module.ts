@@ -6,10 +6,12 @@ import {AusgabeDetailComponent} from './ausgabe-detail/ausgabe-detail.component'
 import {MatButtonModule} from "@angular/material/button";
 import {NgMaterialModule} from "../ng-material/ng-material.module";
 import {RouterModule} from "@angular/router";
+import {AusgabeGridComponent} from './ausgabe-grid/ausgabe-grid.component';
+import {SearchAusgabeResultsComponent} from './search-ausgabe-results/search-ausgabe-results.component';
 
 
 @NgModule({
-  declarations: [AusgabeComponent, AusgabeDetailComponent],
+  declarations: [AusgabeComponent, AusgabeDetailComponent, AusgabeGridComponent, SearchAusgabeResultsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -20,6 +22,6 @@ import {RouterModule} from "@angular/router";
     MatButtonModule,
     NgMaterialModule
   ],
-  providers: []
+  providers: [ Location ]
 })
 export class AusgabeModule { }
