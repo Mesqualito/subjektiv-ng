@@ -61,6 +61,7 @@ export class AusgabeDetailComponent {
   }
 
   getAusgabe(ausgabeId: number): Observable<IAusgabe> {
+    // ToDo: https://youtu.be/q--U25yPTrA?t=1698 => switchMap to discard in-flight request for a new id
     return this._ausgabeService.getById(ausgabeId);
   }
 }

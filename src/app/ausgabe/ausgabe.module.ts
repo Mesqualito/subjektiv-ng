@@ -10,16 +10,10 @@ import {SearchAusgabeResultsComponent} from './search-ausgabe-results/search-aus
 
 
 const routes: Route[] = [
-  {path: '', pathMatch: 'full', redirectTo: 'categories'},
   {path: 'search-results', component: SearchAusgabeResultsComponent},
-  {
-    path: 'categories',
-    children: [
-      {path: '', pathMatch: 'full', redirectTo: 'all'},
-      {path: ':category', component: HasToBeReplacedComponent},
-    ]
-  }
-];
+  {path: ':ausgabeId/:maxId/view', component: AusgabeDetailComponent},
+  {path: '', component: AusgabeGridComponent}
+  ];
 
 @NgModule({
   declarations: [AusgabeDetailComponent, AusgabeGridComponent, SearchAusgabeResultsComponent],

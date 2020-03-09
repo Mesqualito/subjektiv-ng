@@ -1,17 +1,17 @@
 import {Component} from '@angular/core';
 import {Observable} from "rxjs";
-import {AusgabeService} from "../shared/services/ausgabe.service";
+import {AusgabeService} from "../../shared/services/ausgabe.service";
 import {map} from "rxjs/operators";
 import {MediaObserver} from "@angular/flex-layout";
-import {IAusgabe} from "../shared/model/ausgabe.model";
 import {ActivatedRoute} from "@angular/router";
+import {IAusgabe} from "../../shared/model/ausgabe.model";
 
 @Component({
-  selector: 'app-ausgabe',
-  templateUrl: './ausgabe.component.html',
-  styleUrls: ['./ausgabe.component.scss']
+  selector: 'app-ausgabe-grid',
+  templateUrl: './ausgabe-grid.component.html',
+  styleUrls: ['./ausgabe-grid.component.scss']
 })
-export class AusgabeComponent {
+export class AusgabeGridComponent {
 
   column$: Observable<number>;
   ausgaben$: Observable<IAusgabe[]>;
