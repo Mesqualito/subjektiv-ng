@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {AusgabeGridComponent} from './ausgabe-grid.component';
 
@@ -6,7 +6,7 @@ describe('AusgabeGridComponent', () => {
   let component: AusgabeGridComponent;
   let fixture: ComponentFixture<AusgabeGridComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ AusgabeGridComponent ]
     })
