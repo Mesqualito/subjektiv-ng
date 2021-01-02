@@ -1,5 +1,9 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {LOCALE_ID} from '@angular/core';
+import localeDe from '@angular/common/locales/de';
+import localeDeExtra from '@angular/common/locales/extra/de';
+import {registerLocaleData} from '@angular/common';
 
 import {routes} from './app-routing';
 import {AppComponent} from './app.component';
@@ -14,6 +18,8 @@ import {SHARED_SERVICES} from "./shared/services";
 import {environment} from "../environments/environment";
 import {API_BASE_URL, WS_URL} from "./app.tokens";
 
+registerLocaleData(localeDe, localeDeExtra);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,14 +31,19 @@ import {API_BASE_URL, WS_URL} from "./app.tokens";
     BrowserModule,
     NgMaterialModule,
     HttpClientModule,
-    RouterModule.forRoot(routes,  { enableTracing: false, onSameUrlNavigation: "reload", relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(routes, {
+      enableTracing: false,
+      onSameUrlNavigation: "reload",
+      relativeLinkResolution: 'legacy'
+    }),
     BrowserAnimationsModule
   ],
   providers: [
-  ...SHARED_SERVICES,
-  { provide: API_BASE_URL, useValue: environment.apiBaseUrl },
-  { provide: WS_URL, useValue: environment.wsUrl }
-],
+    ...SHARED_SERVICES,
+    {provide: LOCALE_ID, useValue: 'de'},
+    {provide: API_BASE_URL, useValue: environment.apiBaseUrl},
+    {provide: WS_URL, useValue: environment.wsUrl}
+  ],
   exports: [],
   bootstrap: [AppComponent]
 })
